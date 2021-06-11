@@ -1,9 +1,11 @@
-/*const chalk = require('chalk');
+const chalk = require('chalk');
 const path = require('path');
-const fs = require('fs/promises');*/
+const fs = require('fs/promises');
+/*
 import chalk from "chalk";
 import path from 'path';
 import fs from 'fs/promises';
+*/
 
 class ClearPlugin {
     constructor() {
@@ -11,7 +13,7 @@ class ClearPlugin {
     }
     apply(compiler){
         compiler.hooks.beforeRun.tap('ClearPlugin',async compiler=>{
-            const distPath = path.resolve(__dirname,compiler.options.output.path);
+            const distPath = path.resolve(compiler.options.output.path);
             const direntList = await fs.readdir(distPath,{withFileTypes:true});
             direntList.forEach(dirent=>{
                 const fullPath = path.resolve(distPath,dirent.name);
@@ -27,4 +29,4 @@ class ClearPlugin {
 }
 
 
-export default ClearPlugin;
+module.exports = ClearPlugin;

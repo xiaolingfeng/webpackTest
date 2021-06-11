@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>阿里邮包</title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            background: #fff;
+            font-size: 14px;
+            font-family: "Microsoft YAHEI", sans-serif;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+        }
+
+        a {
+            color: #009DDC;
+            text-decoration: none
+        }
+
+        .claim{
+            padding: 12px;
+            background: #eee;
+        }
+        .claim-item{
+            display: block;
+            margin:10px auto;
+        }
+        .claim-item:after{
+            content:'';
+            display:inline-block;
+            width:100%;
+            clear:both
+        }
+        .claim-item-a{width:20px;float:left}
+        .claim-item-b{width:100%;float:right;box-sizing: border-box;padding-left:20px;margin-left:-20px;}
+    </style>
+</head>
+<body>
+<div class="claim">
+    <label class="claim-item">
+        <span class="claim-item-a"></span>
+        <span id="rate" class="claim-item-b">保险费率：每笔订单金额*1.3%</span>
+    </label>
+    <label class="claim-item">
+        <span class="claim-item-a"></span>
+        <span class="claim-item-b">
+            温馨提示：本产品由中国太平洋财产保险股份有限公司承保，您即将进入投保流程，请仔细阅读投保协议、投保须知、付款授权服务协议等内容，您在当前页面的操作将会被记录并加密存储。本模块由中国太平洋财产保险股份有限公司管理并运营。
+        </span>
+    </label>
+    <label class="claim-item">
+        <span class="claim-item-a"><input id="agree" type="checkbox"></span>
+        <span class="claim-item-b">
+            我已自行阅读并同意<a href="./protocol.html">《投保协议》</a>、<a href="./notify.html">《投保须知》</a>、<a href="https://render.alipay.com/p/f/fd-jcewajz2/index.html">《付款授权服务协议》</a>
+            <!--本产品由太平洋财产保险股份有限公司承保，您即将进入投保流程，请仔细阅读
+            <a href="./protocol.html">《投保协议》</a>、<a href="./notify.html">《投保须知》</a>、<a href="https://www.baidu.com">《保险条款》</a>、<a href="https://www.baidu.com">《免责条款》</a>
+            等内容，如您点击下方"同意协议并付款"，则视为同意我司关于网络平台买家应付款保证保险全部说明，您在当前页面的操作将被记录并加密存储，本模块由太平洋财产保险股份有限公司管理并运营。-->
+        </span>
+    </label>
+</div>
+
+<script type="application/javascript">
+    var postMessageWrapper = function (data) {
+        var pWin = window && window.parent;
+        pWin && pWin.postMessage(data, '*');
+    };
+
+    (function pageReadyWrapper() {
+        var pageReady = function () {
+            var data = {
+                type: 'ALI_INSURANCE_PAGE_READY',
+                value: '1',
+            };
+            postMessageWrapper(data);
+            window.postMessage(data, '*');
+        };
+
+        var PAGE_READY_EVENT_LOCK = false;
+        var document = window.document;
+
+        // ⽀持IE9、Chrome、Firefox、Opera、Safari等
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!PAGE_READY_EVENT_LOCK) {
+                pageReady();
+                PAGE_READY_EVENT_LOCK = true;
+            }
+        });
+        // ⽀持IE8
+        document.onreadystatechange = function () {
+            if (document.readyState === 'complete' && !PAGE_READY_EVENT_LOCK) {
+                pageReady();
+                PAGE_READY_EVENT_LOCK = true;
+            }
+        };
+        // 低于IE8的IE浏览器，不⽀持
+    })();
+
+    (function pageResizeWrapper() {
+        function getPageHeight() {
+            var document = window.document,
+                body = document.body,
+                documentElement = document.documentElement;
+            return Math.max(body.scrollHeight, body.offsetHeight, documentElement.offsetHeight);
+        }
+
+        // ⻚⾯Resize事件
+        function pageResize() {
+            var pageHeight = getPageHeight();
+            postMessageWrapper({
+                type: 'ALI_INSURANCE_PAGE_HEIGHT',
+                value: pageHeight,
+            });
+        }
+
+        window.addEventListener('message', event => {
+            var data = event.data || {};
+            if (data.type === 'ALI_INSURANCE_PAGE_READY') {
+                // ⾃动触发⼀次
+                pageResize();
+            }
+        }, '*');
+
+        var resizeTimeout;  // 节流
+        function pageResizeThrottler() {
+            if (!resizeTimeout) {
+                resizeTimeout = setTimeout(function () {
+                    resizeTimeout = null;
+                    pageResize();
+                }, 200);
+            }
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener('resize', pageResizeThrottler, false);
+        } else if (window.attachEvent) {
+            window.attachEvent('onresize', pageResizeThrottler);
+        }
+    })()
+
+    // 协议勾选、取消
+    function protocolWrapper(value) {
+        if (!/^(1|0)$/.test(value)) {
+            return;
+        }
+        postMessageWrapper({
+            type: 'ALI_INSURANCE_PROTOCOL',
+            value: value + '',
+        });
+    }
+
+    // 打开链接，需要以 http 开头，⽀持 http/https
+    function openLinkWrapper(url) {
+        if (!url || !/^http/.test(url)) {
+            return;
+        }
+        postMessageWrapper({
+            type: 'ALI_INSURANCE_OPEN_LINK',
+            value: url,
+        });
+    }
+
+    function getParams(key){
+        let arr = location.search.slice(1).split('&')
+        let obj = {};
+        for(var i = 0 ; i < arr.length ; i++){
+            let map = arr[i].split('=');
+            if(key && key === map[0]){
+                return map[1];
+            }
+            obj[map[0]] = map[1];
+        }
+        if(!key){
+            return obj;
+        }
+        return null;
+    }
+
+    document.getElementById('rate').innerHTML = '保险费率：每笔订单金额*' + getParams('feeRate') +'%'
+    var agreeInput = document.getElementById('agree');
+    agreeInput.addEventListener('change', function () {
+        var checked = agreeInput.checked ? '1' : '0';
+        protocolWrapper(checked);
+    })
+    document.body.addEventListener('click', function (e) {
+        var target = e.target;
+        if (target instanceof HTMLAnchorElement) {
+            openLinkWrapper(target.getAttribute('href'));
+        }
+    })
+</script>
+</body>
+</html>

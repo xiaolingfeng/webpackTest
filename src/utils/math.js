@@ -1,7 +1,12 @@
-exports.square = function square(num){
+function square(num){
     return num * num;
 }
 
-exports.add = function add(a,b){
+function add(a,b){
     return a + b;
+}
+
+export default {
+    square,
+    add
 }

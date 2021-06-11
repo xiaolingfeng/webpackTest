@@ -1,1 +1,2 @@
-exports.math = require('./math');
+// exports.math = require('./math');
+export {default as math} from './math'
