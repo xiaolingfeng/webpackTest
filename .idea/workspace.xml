@@ -19,32 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24914bc1-9bc4-4385-84e7-4bba2c2e5dd2" name="Default Changelist" comment="temp">
-      <change afterPath="$PROJECT_DIR$/aliExpress/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aliExpress/notify.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aliExpress/protocol.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/build.main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/compilation-stats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/loaders/babel-loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/plugins/LogTestPlugin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/utils/createLogFile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/utils/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/log.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/loaders/myConsole.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/loaders/myConsole-loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/plugins/clearPlugin.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/plugins/clearPlugin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main.[fullhash:6].0.de236b634f7d2d50f6ce.bundle.1623055279770.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/utils.[fullhash:6].1.9db4041fe52837602ea2.bundle.1623055279770.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myModule.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/timeFormatter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/timeFormatter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/math.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/math.js" afterDir="false" />
-    </list>
+    <list default="true" id="24914bc1-9bc4-4385-84e7-4bba2c2e5dd2" name="Default Changelist" comment="temp" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -155,7 +130,7 @@
       <workItem from="1623402381280" duration="2000" />
       <workItem from="1623402394934" duration="5000" />
       <workItem from="1623402409475" duration="133000" />
-      <workItem from="1623402587369" duration="3137000" />
+      <workItem from="1623402587369" duration="3353000" />
     </task>
     <task id="LOCAL-00001" summary="temp">
       <created>1623058603001</created>
@@ -171,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623058634270</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="temp">
+      <created>1623407307948</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1623407307948</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +172,8 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="temp" />
     <option name="LAST_COMMIT_MESSAGE" value="temp" />
@@ -307,10 +291,10 @@
     </state>
     <state x="349" y="161" key="SettingsEditor/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1623402539660" />
     <state x="349" y="161" key="SettingsEditor/0.0.1680.1050/1680.25.1920.1055@0.0.1680.1050" timestamp="1623404084204" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1623058640616">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1623407313520">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1623058640616" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050/1680.0.1920.1080@0.0.1680.1050" timestamp="1623407313520" />
     <state x="100" y="100" width="1480" height="850" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1623318207008">
       <screen x="0" y="0" width="1680" height="1007" />
     </state>
