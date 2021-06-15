@@ -12,7 +12,22 @@ function createLogFile(filename,content) {
     }
     const timeStamp = new Date().getTime();
     const hash = createHash('md5').update(content).digest('hex');
-    const pathname = path.resolve(defaultPath, `${filename}_${timeStamp}.json5`);
+    fs.stat(defaultPath,function(err,stats){
+        const pathname = path.resolve(defaultPath, `${filename}_${timeStamp}.json5`);
+        if(err){
+            console.error(err);
+            fs.mkdir(defaultPath,function(){
+                writeFile(pathname,content)
+            })
+        }else{
+            writeFile(pathname,content)
+        }
+    })
+
+
+}
+
+function writeFile(pathname,content){
     fs.writeFile(pathname,content,(err)=>{
         if(err) throw err;
         console.log(chalk.green(`Log is saved in ${pathname}`))
