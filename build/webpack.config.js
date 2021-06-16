@@ -2,17 +2,20 @@ const path = require('path');
 const ClearPlugin =  require("./plugins/clearPlugin.js");
 const LogTestPlugin = require('./plugins/LogTestPlugin');
 const currentDate = new Date().getTime();
+const webpack = require('webpack');
 
 module.exports = {
     // mode:'development',
-    mode:'production',
+    // mode:'production',
+    mode:'none',
     entry:{
-        main:path.resolve(__dirname,'../src/main.js'),
-        utils:path.resolve(__dirname,'../src/utils/index.js')
+        main:path.resolve(__dirname,'../src/main/index.js'),
+        utils:path.resolve(__dirname,'../src/utils/index.js'),
+        main2:path.resolve(__dirname,'../src/main2/index.js')
     },
     output:{
         path:path.resolve('dist'),
-        filename:'[name].[fullhash:6].[id].[contenthash].bundle.'+ currentDate +'.js',
+        filename:'[name].[hash:6].[id].bundle.'+ currentDate +'.js',
     },
     module: {
         rules: [
@@ -35,9 +38,18 @@ module.exports = {
             }
         ]
     },
-    /*optimization: {
-        minimize: false
-    },*/
+    resolve: {
+        alias:{
+            '@':path.resolve(__dirname,'../src')
+        }
+    },
+    optimization: {
+        minimize: false,
+        splitChunks: {
+            chunks: "all",
+
+        }
+    },
     plugins: [
         new ClearPlugin(),
         new LogTestPlugin(),
