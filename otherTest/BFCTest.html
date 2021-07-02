@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0}
+        div,span{border:1px solid #ccc;margin:3px;}
+        .parent,.parent{background: #eee}
+        .sub{background: #fcc}
+        .item{background: #cfc;border:1px solid #fcf}
+    </style>
+</head>
+<body>
+<p>normal flow</p>
+<div style="width:500px">
+    <div class="item" style="margin:10px;height:40px;width:40px;"></div>
+    <div style="width:200px;height:100px;"></div>
+
+    <div class="item" style="margin:10px;height:40px;width:40px;"></div>
+    <div class="item" style="margin:10px;height:40px;width:40px;"></div>
+    <div class="item" style="margin:10px;height:40px;width:40px;"></div>
+    <div class="item" style="margin:10px;height:40px;width:40px;"></div>
+
+    <div>TEST</div>
+    <span style="border:20px solid rgba(255,0,0,0.4);margin:20px;padding:20px;">测试</span>
+    <span>测试</span>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>Float flow</p>
+<div style="width:500px">
+    <div style="width:200px;height:100px;float:left;margin:20px;background: #eee"></div>
+    <div style="overflow: auto;margin:20px;padding:10px;">测试 <br>测试 <br>测试 <br>测试 <br>测试 <br>测试 <br>测试 <br>测试 <br>测试 <br>测试 <br>测试 <br>测试 <br>测试 <br>测试 <br>测试 <br></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<p>absolute Position</p>
+<div style="width:500px;overflow: hidden">
+    <div style="width:200px;height:100px;position: absolute"></div>
+
+</div>
+</body>
+</html>

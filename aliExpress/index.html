@@ -4,68 +4,39 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <title>阿里邮包</title>
+    <title>AliExpress 退货险</title>
     <style type="text/css">
         html, body {
             margin: 0;
-            background: #fff;
+            font-family: "PingFang SC", "Microsoft YAHEI", sans-serif;
             font-size: 14px;
-            font-family: "Microsoft YAHEI", sans-serif;
         }
 
-        p {
-            margin: 0;
-            padding: 0;
-            line-height: 1.4;
+        .claim {
+            font-size: 14px;
         }
 
-        a {
-            color: #009DDC;
+        .claim a {
+            color: #46A7CA;
             text-decoration: none
         }
 
-        .claim{
-            padding: 12px;
-            background: #eee;
+        .claim p {
+            color: #333;
+            margin:5px 0;
         }
-        .claim-item{
-            display: block;
-            margin:10px auto;
-        }
-        .claim-item:after{
-            content:'';
-            display:inline-block;
-            width:100%;
-            clear:both
-        }
-        .claim-item-a{width:20px;float:left}
-        .claim-item-b{width:100%;float:right;box-sizing: border-box;padding-left:20px;margin-left:-20px;}
+
     </style>
+    <script type="text/javascript" async src="https://isee-test-sit.cpic.com.cn/isee/eye.js"></script>
 </head>
 <body>
 <div class="claim">
-    <label class="claim-item">
-        <span class="claim-item-a"></span>
-        <span id="rate" class="claim-item-b">保险费率：每笔订单金额*1.3%</span>
-    </label>
-    <label class="claim-item">
-        <span class="claim-item-a"></span>
-        <span class="claim-item-b">
-            温馨提示：本产品由中国太平洋财产保险股份有限公司承保，您即将进入投保流程，请仔细阅读投保协议、投保须知、付款授权服务协议等内容，您在当前页面的操作将会被记录并加密存储。本模块由中国太平洋财产保险股份有限公司管理并运营。
-        </span>
-    </label>
-    <label class="claim-item">
-        <span class="claim-item-a"><input id="agree" type="checkbox"></span>
-        <span class="claim-item-b">
-            我已自行阅读并同意<a href="./protocol.html">《投保协议》</a>、<a href="./notify.html">《投保须知》</a>、<a href="https://render.alipay.com/p/f/fd-jcewajz2/index.html">《付款授权服务协议》</a>
-            <!--本产品由太平洋财产保险股份有限公司承保，您即将进入投保流程，请仔细阅读
-            <a href="./protocol.html">《投保协议》</a>、<a href="./notify.html">《投保须知》</a>、<a href="https://www.baidu.com">《保险条款》</a>、<a href="https://www.baidu.com">《免责条款》</a>
-            等内容，如您点击下方"同意协议并付款"，则视为同意我司关于网络平台买家应付款保证保险全部说明，您在当前页面的操作将被记录并加密存储，本模块由太平洋财产保险股份有限公司管理并运营。-->
-        </span>
-    </label>
+    <p><b>保险费率：每笔订单金额*<span id="rate"></span>%</b></p>
+    <p>温馨提示：本产品由中国太平洋财产保险股份有限公司承保，您即将进入投保流程，请仔细阅读投保协议、投保须知等内容，您在当前页面的操作将会被记录并加密存储。本模块由中国太平洋财产保险股份有限公司管理并运营。</p>
+    <p><label><input id="agree" type="checkbox">我已经自行阅读并同意<a href="./protocol.html">《投保协议》</a>、<a href="./notify.html">《投保须知》</a></label></p>
 </div>
 
-<script type="application/javascript">
+<script type="text/javascript">
     var postMessageWrapper = function (data) {
         var pWin = window && window.parent;
         pWin && pWin.postMessage(data, '*');
@@ -165,34 +136,118 @@
         });
     }
 
-    function getParams(key){
+    function getParams(key) {
         let arr = location.search.slice(1).split('&')
         let obj = {};
-        for(var i = 0 ; i < arr.length ; i++){
+        for (var i = 0; i < arr.length; i++) {
             let map = arr[i].split('=');
-            if(key && key === map[0]){
+            if (key && key === map[0]) {
                 return map[1];
             }
             obj[map[0]] = map[1];
         }
-        if(!key){
+        if (!key) {
             return obj;
         }
         return null;
     }
 
-    document.getElementById('rate').innerHTML = '保险费率：每笔订单金额*' + getParams('feeRate') +'%'
-    var agreeInput = document.getElementById('agree');
-    agreeInput.addEventListener('change', function () {
-        var checked = agreeInput.checked ? '1' : '0';
-        protocolWrapper(checked);
-    })
-    document.body.addEventListener('click', function (e) {
-        var target = e.target;
-        if (target instanceof HTMLAnchorElement) {
-            openLinkWrapper(target.getAttribute('href'));
+    function ajax(options) {
+        var defaultOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: {},
+            success: function () {
+            }
         }
-    })
+        options.headers = Object.assign({}, defaultOptions.headers, options.headers);
+        options = Object.assign({}, defaultOptions, options);
+        if (!options.url) {
+            throw new Error('url is required')
+        }
+        var xhr;
+        try{
+            xhr = new XMLHttpRequest();
+        }catch(e){
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        xhr.open(options.method, options.url, true);
+        Object.keys(options.headers).forEach(function (key) {
+            xhr.setRequestHeader(key, options.headers[key])
+        });
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                options.success(xhr.response)
+            }
+        }
+        xhr.send(JSON.stringify(options.data))
+    }
+
+    (function () {
+        // var isProd = location.host.indexOf('dwx.cpic.com.cn') !== -1;
+        // var url = isProd ? 'https://dwx.cpic.com.cn/nonvehicle/napi/cldCallback/callback' : 'https://dwx-sit.cpic.com.cn/nonvehicle/napi/cldCallback/callback';
+        var url = '/nonvehicle/napi/cldCallback/callback';
+        document.getElementById('rate').innerHTML = getParams('feeRate');
+        var agreeInput = document.getElementById('agree');
+
+        // function iseeBizCallback(){
+        //     agreeInput.removeAttribute('disabled')
+        // }
+        //
+        // if(!window.iseeBiz){
+        //     window.iseeBizCallback = iseeBizCallback;
+        // }else{
+        //     iseeBizCallback();
+        // }
+
+        agreeInput.addEventListener('change', function () {
+            var checked = agreeInput.checked ? '1' : '0';
+            protocolWrapper(checked);
+
+            var data = {
+                "i_see_biz": window.iseeBiz,
+                "orderId": getParams('orderNo'),
+                "customer": [
+                    {
+                        "customIdNo": "证件号码",
+                        "customIdType:": "111",
+                        "customMobile": "手机号码",
+                        "customName": "投保人姓名",
+                        "customType": "1"
+                    }
+                ],
+                "extraInfo": JSON.stringify({
+                    "用户ID": getParams('userid'),
+                    "费率": getParams('feeRate')
+                })
+            }
+            ajax({
+                method: 'POST',
+                url: url,
+                data: data,
+            })
+        })
+        document.body.addEventListener('click', function (e) {
+            var target = e.target;
+            if (target instanceof HTMLAnchorElement) {
+                e.preventDefault();
+                var href = e.target.getAttribute('href');
+                if (!href) return;
+                if (href.indexOf('http') === -1) {
+                    href = location.href.replace(/\/index\.html.*/g, href.slice(1));
+                }
+                openLinkWrapper(href);
+            }
+        })
+
+        /*var js = isProd ? 'https://isee.cpic.com.cn/isee/eye.js' : 'https://isee-test-sit.cpic.com.cn/isee/eye.js';
+        var script = document.createElement('script');
+        script.src = js;
+        document.body.appendChild(script);*/
+    })();
 </script>
+
 </body>
 </html>

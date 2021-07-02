@@ -8,6 +8,8 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "chalk": "^4.1.1",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^2.0.0",
     "json5": "^2.2.0",
     "loader-utils": "^2.0.0",
     "schema-utils": "^3.0.0",

@@ -5,7 +5,6 @@ const defaultPath = path.resolve(__dirname, '../log');
 const JSON5 = require('json5');
 const {createHash} = require('crypto');
 
-
 function createLogFile(filename,content) {
     if (!(typeof content === 'string')) {
         content = JSON5.stringify(content,null,2);
@@ -15,7 +14,6 @@ function createLogFile(filename,content) {
     fs.stat(defaultPath,function(err,stats){
         const pathname = path.resolve(defaultPath, `${filename}_${timeStamp}.json5`);
         if(err){
-            console.error(err);
             fs.mkdir(defaultPath,function(){
                 writeFile(pathname,content)
             })
@@ -23,8 +21,6 @@ function createLogFile(filename,content) {
             writeFile(pathname,content)
         }
     })
-
-
 }
 
 function writeFile(pathname,content){

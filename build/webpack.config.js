@@ -1,7 +1,6 @@
 const path = require('path');
 const ClearPlugin =  require("./plugins/clearPlugin.js");
 const LogTestPlugin = require('./plugins/LogTestPlugin');
-const currentDate = new Date().getTime();
 const webpack = require('webpack');
 
 module.exports = {
@@ -15,7 +14,7 @@ module.exports = {
     },
     output:{
         path:path.resolve('dist'),
-        filename:'[name].[hash:6].[id].bundle.'+ currentDate +'.js',
+        filename:'[name].[contenthash:6].js',
     },
     module: {
         rules: [
@@ -43,11 +42,11 @@ module.exports = {
             '@':path.resolve(__dirname,'../src')
         }
     },
+    devtool: 'source-map',
     optimization: {
         minimize: false,
         splitChunks: {
             chunks: "all",
-
         }
     },
     plugins: [
