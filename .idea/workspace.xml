@@ -20,22 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24914bc1-9bc4-4385-84e7-4bba2c2e5dd2" name="Default Changelist" comment="temp">
-      <change afterPath="$PROJECT_DIR$/agentServer/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aliExpress.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/otherTest/BFCTest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/otherTest/iframeTest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/otherTest/jsonCompare.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aliExpress/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/aliExpress/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aliExpress/notify.html" beforeDir="false" afterPath="$PROJECT_DIR$/aliExpress/notify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aliExpress/protocol.html" beforeDir="false" afterPath="$PROJECT_DIR$/aliExpress/protocol.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/compilation-stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/compilation-stats.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utils/createLogFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utils/createLogFile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/duplicationModuleTest/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/duplicationModuleTest/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/log.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/aliExpress.zip" beforeDir="false" afterPath="$PROJECT_DIR$/aliExpress.zip" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +42,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ohAhaizx7TvQI6uaJIBJ2fqINN" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -70,7 +58,7 @@
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/otherTest" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
@@ -78,6 +66,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/otherTest" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/aliExpress" />
       <recent name="$PROJECT_DIR$/aliMail" />
@@ -153,7 +142,10 @@
       <workItem from="1623402409475" duration="133000" />
       <workItem from="1623402587369" duration="3353000" />
       <workItem from="1623833747402" duration="15315000" />
-      <workItem from="1624498197278" duration="24230000" />
+      <workItem from="1624498197278" duration="24360000" />
+      <workItem from="1625448704471" duration="1112000" />
+      <workItem from="1626242084014" duration="661000" />
+      <workItem from="1626958459469" duration="1544000" />
     </task>
     <task id="LOCAL-00001" summary="temp">
       <created>1623058603001</created>
@@ -176,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623407307948</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="temp">
+      <created>1625219495958</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1625219495960</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

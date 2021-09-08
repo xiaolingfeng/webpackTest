@@ -13,7 +13,7 @@ app.all('*',function(req,res,next){
 })
 
 app.use('/nonvehicle',createProxyMiddleware({
-    target:'https://dwx-sit.cpic.com.cn',
+    target:'https://baidu.com',
     changeOrigin:true,
 }))
 

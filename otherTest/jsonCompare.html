@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        textarea {
+            resize: none;
+            height: 400px;
+            width: 400px;
+            word-break: normal;
+            white-space: nowrap;
+            overflow: scroll;
+        }
+
+        #result {
+
+        }
+
+        #result th {
+            text-align: left
+        }
+
+        #result td {
+            padding: 5px;
+            font-size: 12px;
+            max-width: 400px;
+            max-height: 50px;
+            overflow: auto;
+            word-break: break-all
+        }
+
+        #result tr:hover td {
+            background: #eee
+        }
+    </style>
+</head>
+<body>
+<form action="" id="form">
+    <textarea name="text1" cols="30" rows="10"></textarea>
+    <textarea name="text2" cols="30" rows="10"></textarea>
+</form>
+<button id="submit">SUBMIT</button>
+<table id="result"></table>
+<script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+<script>
+    const form = document.getElementById('form');
+
+    const dom_button = document.getElementById('submit');
+    const dom_result = document.getElementById('result');
+    const valueA = sessionStorage.getItem('valueA');
+    const valueB = sessionStorage.getItem('valueB');
+
+    form.text1.addEventListener('change',function(){
+        form.text1.value = format(form.text1.value);
+    })
+
+    form.text2.addEventListener('change',function(){
+        form.text2.value = format(form.text2.value);
+    })
+
+    if (valueA) form.text1.value = valueA;
+    if (valueB) form.text2.value = valueB;
+
+
+
+    dom_button.addEventListener('click', function (e) {
+        const text1 = form.text1.value;
+        const text2 = form.text2.value;
+        const obj1 = JSON.parse(text1);
+        const obj2 = JSON.parse(text2);
+
+        sessionStorage.setItem('valueA', text1);
+        sessionStorage.setItem('valueB', text2);
+
+        const result = compare(obj1, obj2);
+
+        const highlightStyle = 'style="color:#f00"';
+        const headerDomStr = `<tr><th>NODE</th><th>JSON_1</th><th>JSON_2</th><th>REASON</th></tr>`
+        dom_result.innerHTML = headerDomStr + result.map(item => {
+            return `<tr><td>${item.node}</td><td ${item.valueA === 'undefined' ? highlightStyle : ''}>${item.valueA}</td><td ${item.valueB === 'undefined' ? highlightStyle : ''}>${item.valueB}</td><td>${item.msg}</td></tr>`
+        }).join('');
+    })
+
+    function compare(a, b) {
+        let result = [];
+
+        function toString(value) {
+            if (value === null) {
+                return 'null'
+            }
+            if (value === undefined) {
+                return 'undefined'
+            }
+            return value.toString();
+        }
+
+        function compareArray(arr1, arr2, namespace) {
+            if (arr1.length !== arr2.length) {
+                result.push(namespace);
+            } else {
+                arr1.forEach(function (item_a, index) {
+                    const current = namespace ? `${namespace}[${index}]` : `[${index}]`
+                    const item_b = arr2[index];
+                    compareItem(item_a, item_b, current);
+                })
+            }
+        }
+
+        function compareObject(a, b, namespace) {
+            const keys_a = Object.keys(a);
+            const keys_b = Object.keys(b);
+
+            const mergedKey = _.uniq(_.concat(keys_a, keys_b)).sort();
+            mergedKey.forEach(k => {
+                const current = namespace ? `${namespace}.${k}` : k;
+                if (!a.hasOwnProperty(k) || !b.hasOwnProperty(k)) {
+                    result.push({node: current, valueA: toString(a[k]), valueB: toString(b[k]), msg: '缺'});
+                } else if (_.isArray(a[k]) && _.isArray(b[k])) {
+                    compareArray(a[k], b[k], current);
+                } else if (_.isObject(a[k]) && _.isObject(b[k])) {
+                    compareObject(a[k], b[k], current);
+                } else if (_.isArray(a[k]) || _.isArray(b[k]) || _.isObject(a[k]) || _.isObject(b[k])) {
+                    result.push({node: current, valueA: toString(a[k]), valueB: toString(b[k]), msg: '类型不同'});
+                } else {
+                    compareValue(a[k], b[k], current);
+                }
+            });
+        }
+
+        function compareValue(a, b, namespace) {
+            if (a !== b) {
+                result.push({node: namespace, valueA: a, valueB: b, msg: '值不同'});
+            }
+        }
+
+        function compareItem(a, b, namespace) {
+            if ((a instanceof Array) && (b instanceof Array)) {
+                compareArray(a, b, namespace);
+            } else if ((a instanceof Object) && (b instanceof Object)) {
+                compareObject(a, b, namespace);
+            } else {
+                result.push(namespace)
+            }
+        }
+
+        compareItem(a, b);
+
+        return result;
+    }
+
+    function format(str) {
+        try {
+            // 设置缩进为2个空格
+            return JSON.stringify(JSON.parse(str), null, 2);
+        } catch (e) {
+            return '';
+        }
+    }
+</script>
+</body>
+</html>
