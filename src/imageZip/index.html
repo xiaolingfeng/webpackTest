@@ -1,0 +1,98 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>图片大小压缩</title>
+</head>
+<body>
+
+<input type="file" id="fileInput" accept="image/*">
+<br/>
+目标大小<input id="targetInput" type="text">(KB)
+结果大小 <span id="resultSize"></span>
+<img id="preview" src="" alt=""/>
+<br/>
+<button id="changeSizeButton">Change Size</button>
+<button id="downloadButton">Download</button>
+</body>
+
+<script>
+    const domFileInput = document.getElementById('fileInput')
+    const domTargetInput = document.getElementById('targetInput')
+    const domResultSizeSpan = document.getElementById('resultSize')
+    const domChangeSizeButton = document.getElementById('changeSizeButton')
+    const domDownloadButton = document.getElementById('downloadButton')
+
+    let resultFile;
+
+    function getImage(file){
+        return new Promise((resolve)=>{
+            const fd = new FileReader();
+            fd.onload = function(evt){
+                const img = new Image();
+                img.src = evt.target.result;
+                img.onload = function(){
+                    resolve(img)
+                }
+            }
+            fd.readAsDataURL(file)
+        })
+    }
+
+    async function changeSize(file,targetSize){
+
+        let quality = 1;
+        const img = await getImage(file)
+        const filename = file.name.split('.').slice(0,-1).join('.') + '.jpg';
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d')
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+        ctx.drawImage(img,0,0)
+
+        async function compress(file,quality){
+            const type = 'image/jpeg';
+            console.warn('compress',file.size,targetSize,quality)
+            return new Promise((resolve)=>{
+                canvas.toBlob(function(blob){
+                    const res = new File([blob],filename,{
+                        type,
+                        lastModified:file.lastModified
+                    })
+                    resolve(res)
+                },type,quality)
+            })
+        }
+
+        let resultFile = file;
+
+        while(resultFile.size > targetSize){
+            if(!quality){quality = 1}
+            else{quality *=0.9}
+            resultFile = await compress(resultFile,quality)
+        }
+        return resultFile
+    }
+
+    async function handleChangeSize(){
+        const file = domFileInput.files[0]
+        const targetSize = Number(domTargetInput.value) * 1024
+        const result = await changeSize(file,targetSize)
+        domResultSizeSpan.innerHTML = Math.ceil(result.size / 1024) + 'KB'
+        resultFile = result;
+    }
+
+    function download(){
+        if(!resultFile) return
+        const url = URL.createObjectURL(resultFile)
+        console.warn(url)
+        window.open(url);
+    }
+
+    domChangeSizeButton.addEventListener('click',handleChangeSize)
+    domDownloadButton.addEventListener('click',download)
+    domTargetInput.value = 300;
+
+</script>
+
+</html>

@@ -12,13 +12,13 @@ app.all('*',function(req,res,next){
     next();
 })
 
-app.use('/nonvehicle',createProxyMiddleware({
-    target:'https://baidu.com',
+app.use('/',createProxyMiddleware({
+    target:'https://dwx.cpic.com.cn',
     changeOrigin:true,
 }))
 
-app.use('/aliExpress',express.static(path.join(__dirname,'../aliExpress')))
+// app.use('/aliExpress',express.static(path.join(__dirname,'../aliExpress')))
 
-app.listen(5000,()=>{
-    console.log('Server run on 5000');
+app.listen(5002,()=>{
+    console.log('Server run on 5002');
 })

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,10 +23,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24914bc1-9bc4-4385-84e7-4bba2c2e5dd2" name="Default Changelist" comment="temp">
-      <change afterPath="$PROJECT_DIR$/otherTest/jsonCompare.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/otherTest/cacheTest/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/otherTest/const.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/otherTest/plusTo100.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shellTest/test.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALGTest/createArray.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALGTest/sort/fastSort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALGTest/sort/heapSort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALGTest/sort/mergeSort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALGTest/sort/radixSort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALGTest/sort/radixSort2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALGTest/sort/selectSort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALGTest/sort/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALGTest/sort/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/baseTest/functionCaller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/canvas/text/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designMode/asyncQueue.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designMode/asyncQueue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designMode/constructor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designMode/objectExtend.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/extendTest/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/extendTest/prototype.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/imageZip/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/webgl/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aliExpress.zip" beforeDir="false" afterPath="$PROJECT_DIR$/aliExpress.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agentServer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/agentServer/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aliExpress.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +70,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="1ohAhaizx7TvQI6uaJIBJ2fqINN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -49,23 +85,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/otherTest" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/ALGTest/sort" />
       <recent name="$PROJECT_DIR$/otherTest" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/aliExpress" />
@@ -77,43 +113,52 @@
       <recent name="$PROJECT_DIR$/build" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.index.html">
-    <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="https://dwx-sit.cpic.com.cn/aliExpress/index.html">
+  <component name="RunManager" selected="Node.js.index.js">
+    <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/webpackTest/src/extendTest/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/webpackTest/aliExpress/index.html" useBuiltInWebServerPort="true">
+    <configuration name="index.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/webpackTest/src/webgl/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/webpackTest/src/canvas/text/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/agentServer/index.js" working-dir="$PROJECT_DIR$/agentServer">
       <method v="2" />
     </configuration>
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build" />
-      </scripts>
-      <node-interpreter value="project" />
+    <configuration name="prototype.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/extendTest/prototype.js" working-dir="$PROJECT_DIR$/src/extendTest">
+      <method v="2" />
+    </configuration>
+    <configuration name="test.sh" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/shellTest/test.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/shellTest" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/sh" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="build:c" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build:c" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.index.html (3)" />
+      <item itemvalue="JavaScript Debug.index.html (2)" />
+      <item itemvalue="JavaScript Debug.index.html (1)" />
+      <item itemvalue="Node.js.prototype.js" />
+      <item itemvalue="Node.js.index.js" />
+      <item itemvalue="Shell Script.test.sh" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.index.html" />
-        <item itemvalue="npm.build" />
         <item itemvalue="Node.js.index.js" />
+        <item itemvalue="JavaScript Debug.index.html (3)" />
+        <item itemvalue="JavaScript Debug.index.html (2)" />
         <item itemvalue="JavaScript Debug.index.html (1)" />
-        <item itemvalue="npm.build:c" />
+        <item itemvalue="Node.js.prototype.js" />
       </list>
     </recent_temporary>
   </component>
@@ -146,6 +191,36 @@
       <workItem from="1625448704471" duration="1112000" />
       <workItem from="1626242084014" duration="661000" />
       <workItem from="1626958459469" duration="1544000" />
+      <workItem from="1631093701921" duration="319000" />
+      <workItem from="1631286084570" duration="41104000" />
+      <workItem from="1634008115759" duration="24000" />
+      <workItem from="1639710075001" duration="34850000" />
+      <workItem from="1642129948313" duration="10331000" />
+      <workItem from="1642168832474" duration="12128000" />
+      <workItem from="1643351538558" duration="806000" />
+      <workItem from="1643897560814" duration="597000" />
+      <workItem from="1644307032013" duration="1399000" />
+      <workItem from="1645614137829" duration="629000" />
+      <workItem from="1647342893769" duration="612000" />
+      <workItem from="1656638566683" duration="4735000" />
+      <workItem from="1656921394916" duration="7658000" />
+      <workItem from="1658124766152" duration="8601000" />
+      <workItem from="1659323710647" duration="4505000" />
+      <workItem from="1662602659333" duration="1815000" />
+      <workItem from="1664376324960" duration="145000" />
+      <workItem from="1664376614548" duration="1904000" />
+      <workItem from="1666167611547" duration="3668000" />
+      <workItem from="1669363633742" duration="1419000" />
+      <workItem from="1673254745328" duration="9157000" />
+      <workItem from="1673419395402" duration="532000" />
+      <workItem from="1677035076662" duration="22000" />
+      <workItem from="1679068047795" duration="1272000" />
+      <workItem from="1681464330357" duration="45000" />
+      <workItem from="1683696915660" duration="1208000" />
+      <workItem from="1684995273576" duration="6528000" />
+      <workItem from="1685069509172" duration="5244000" />
+      <workItem from="1686117935700" duration="29216000" />
+      <workItem from="1690860386402" duration="2937000" />
     </task>
     <task id="LOCAL-00001" summary="temp">
       <created>1623058603001</created>
@@ -175,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625219495960</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="temp">
+      <created>1631093846446</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1631093846446</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +273,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />

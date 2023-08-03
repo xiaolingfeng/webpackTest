@@ -1,0 +1,100 @@
+<html>
+<head></head>
+<body>
+<canvas id="canvas1"></canvas>
+
+<script type="notjs" id="vertex-shader-2d">
+    attribute vec4 a_position;
+    void main(){
+        gl_Position=a_position;
+    }
+</script>
+
+<script type="notjs" id="fragment-shader-2d">
+    precision mediump float;
+    void main(){
+        gl_FragColor = vec4(1,0,0.5,1);
+    }
+</script>
+
+<script>
+    const canvas = document.getElementById('canvas1')
+    const gl = canvas.getContext('webgl')
+
+    gl.clearColor(0.0,0.0,0.0,1.0)
+    gl.clear(gl.COLOR_BUFFER_BIT)
+
+    function createShader(gl,type,source){
+        let shader = gl.createShader(type)
+        gl.shaderSource(shader,source)
+        gl.compileShader(shader)
+        let success = gl.getShaderParameter(shader,gl.COMPILE_STATUS)
+        console.log('shader params',success)
+        if(success){
+            return shader
+        }
+
+        // 不成功
+        console.log(gl.getShaderInfoLog(shader))
+        gl.deleteShader(shader)
+    }
+
+    function createProgram(gl,vertexShader,fragmentShader){
+        let program = gl.createProgram()
+        gl.attachShader(program,vertexShader)
+        gl.attachShader(program,fragmentShader)
+        gl.linkProgram(program)
+        let success = gl.getProgramParameter(program,gl.LINK_STATUS)
+        if(success){
+            return program
+        }
+
+
+        console.log(gl.getProgramInfoLog(program))
+        gl.deleteProgram(program)
+    }
+
+    //init
+    let vertexShaderSource = document.querySelector('#vertex-shader-2d').text;
+    let fragmentShaderSource = document.querySelector('#fragment-shader-2d').text;
+
+    let vertexShader = createShader(gl,gl.VERTEX_SHADER,vertexShaderSource)
+    let fragmentShader = createShader(gl,gl.FRAGMENT_SHADER,fragmentShaderSource)
+
+    let program = createProgram(gl,vertexShader,fragmentShader)
+
+    let positionAttributeLocation = gl.getAttribLocation(program,'a_position')
+    let positionBuffer = gl.createBuffer()
+    gl.bindBuffer(gl.ARRAY_BUFFER,positionBuffer)
+    let positions = [
+        0,0,
+        0,0.5,
+        0.7,0
+    ]
+    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(positions),gl.STATIC_DRAW)
+
+    //render
+    gl.canvas.height = 300
+    gl.canvas.width = 400
+    gl.viewport(0,0,gl.canvas.width,gl.canvas.height)
+    gl.clearColor(0,0,0,0)
+    gl.clear(gl.COLOR_BUFFER_BIT)
+    gl.useProgram(program)
+    gl.enableVertexAttribArray(positionAttributeLocation)
+    gl.bindBuffer(gl.ARRAY_BUFFER,positionBuffer)
+
+    let size = 2
+    let type = gl.FLOAT
+    let normalize = false
+    let stride = 0
+    let offset = 0
+
+    gl.vertexAttribPointer(positionAttributeLocation,size,type,normalize,stride,offset)
+
+    let primitiveType = gl.TRIANGLES
+    offset = 0;
+    let count = 3
+    gl.drawArrays(primitiveType,offset,count)
+</script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<div class="header">
+    <input id="input" type="text" value="Hello"/>
+    <label>line:<input type="checkbox" id="line"/></label>
+    <label>speed: <input id="speed" type="range" max="20" min="1" value="1"/></label>
+    <label>color: <input id="color" type="range" value="160" min="1" max="360"> <span class="color-show"></span></label>
+    <button id="btn">Generate</button>
+</div>
+<canvas id="canvas"></canvas>
+<style>
+    html,body{
+        margin:0;padding:0;
+    }
+    body{
+        width:100vw;
+        height:100vh;
+    }
+    .header{
+        height:40px;width:100vw;
+        position:absolute;z-index:10;
+        background: #fff;
+        display: flex;
+        align-items: center;
+    }
+    .header>*{margin-right:20px}
+    .color-show{display: inline-block;height:20px;width:30px}
+    #canvas{
+        width:100vw;height:100vh
+    }
+</style>
+<script>
+    const radius = 5;
+    const input = document.getElementById('input')
+    const lineInput = document.getElementById('line')
+    const speedInput = document.getElementById('speed')
+    const colorInput = document.getElementById('color')
+    let line,speed=1,color
+    const btn = document.getElementById('btn')
+    btn.addEventListener('click',main)
+    const canvas = document.getElementById('canvas')
+    const pen = canvas.getContext('2d')
+    let W,H
+    let ox,oy;  // 渲染区域的开始点
+    let timer;
+
+    function setCanvasSize(){
+        H = canvas.height = document.body.clientHeight
+        W = canvas.width = document.body.clientWidth
+    }
+    setCanvasSize()
+    window.addEventListener('resize',setCanvasSize)
+    colorInput.addEventListener('input',function(){
+        const c = `hsl(${colorInput.value},100%,50%)`
+        document.querySelector('.color-show').style.backgroundColor = c
+    })
+    function getData(text){
+        const h = 200 / radius;
+        const w = h * 10
+        const offCanvas = document.createElement('canvas')
+        offCanvas.width = w;
+        offCanvas.height = h;
+        const pen = offCanvas.getContext('2d')
+        pen.textAlign = 'center';
+        let fontSize = h * 0.8
+        pen.font =`bold ${fontSize}px "楷体"`;
+        pen.textBaseline = 'middle'
+        pen.fillText(text,w/2,h/2)
+        const {data} = pen.getImageData(0,0,w,h)
+        const dots = []
+        let top,bottom,left,right;
+        for(let r = 0; r < h ; r++){
+            let i = r * w * 4
+            for(let c = 0 ; c < w ; c++){
+                let j = i + c * 4
+                let a = data[j+3]
+                if(a){
+                    if(!top) top = r
+                    bottom = r
+                    if(!left || c < left) left = c
+                    if(!right || c > right) right = c
+                    const rate = a / 256
+                    dots.push({
+                        c,r,
+                        radius:radius * rate,
+                        // color:getColorByRadius(rate)
+                        color:getRandomColor()
+                    })
+                }
+            }
+        }
+
+        const result = {
+            cols:right - left,
+            rows:bottom - top,
+            boundary:{left,top},
+            dots
+        }
+        return result
+    }
+
+    function render(text){
+        cancelAnimationFrame(timer)
+        const {cols,rows,dots,boundary} = getData(text)
+        const {left,top} = boundary
+        ox = W / 2 - cols * radius
+        oy = H / 2 - rows * radius
+        const l = radius * 2;
+        dots.forEach(dot=>{
+            dot.c -= left
+            dot.r -= top
+            /*const position = getRandomPosition()
+            dot.x = position.x
+            dot.y = position.y*/
+            /*dot.x = 0
+            dot.y = oy + Math.random() * (rows * radius * 2)*/
+            /*dot.x = W/2
+            dot.y = H*/
+            dot.end = {
+                x: ox + dot.c * l,
+                y: oy + dot.r * l
+            }
+            dot.x = dot.end.x + Math.random() * 600 - 300
+            dot.y = dot.end.y + Math.random() * 600 - 300
+            dot.finish = false
+            const v = speed
+            dot.vRate = (dot.end.y - dot.y) / (dot.end.x  -dot.x)
+            dot.vx = (dot.end.x - dot.x > 0 ? 1 : -1) * v
+            dot.vy = dot.vx * dot.vRate
+        })
+        tick(dots)
+    }
+
+    function tick(dots){
+        pen.clearRect(0,0,W,H)
+        dots.forEach(dot=>{
+            moveDot(dot)
+            renderDot(dot,dots)
+        })
+
+        timer = requestAnimationFrame(()=>{
+            tick(dots)
+        })
+    }
+
+    function moveDot(dot){
+        if(dot.finish) return
+        const dx = dot.x + dot.vx
+        const dis = dx-dot.end.x
+        if((dis >= 0 && dot.vx >= 0) || (dis <= 0 && dot.vx <= 0)){
+            dot.x = dot.end.x;
+            dot.y = dot.end.y;
+            dot.finish = true
+            return
+        }
+        const dy = dot.y + dot.vy
+        dot.x = dx
+        dot.y = dy
+    }
+
+    function getColorByRadius(a){
+        const h = 160 + Math.floor(a * 60)
+        // const h = 180 + Math.floor(Math.random() * 80)
+        // const h = 200
+        return `hsl(${h},100%,50%)`
+    }
+
+    function getDistance(p1,p2){
+        return Math.pow(Math.pow(p1.x-p2.x,2) + Math.pow(p1.y-p2.y,2),0.5)
+    }
+
+    function getRandomColor(){
+        /*const h = Math.floor(Math.random() * 360)
+        return `hsl(${h},100%,50%)`*/
+        const l = 30 + Math.floor(Math.random() * 50)
+        // const h = 180 + Math.floor(Math.random() * 80)
+        const h = color
+        return `hsl(${h},100%,${l}%)`
+    }
+
+    function getRandomPosition(){
+        return {
+            x:Math.floor(Math.random() * W),
+            y:Math.floor(Math.random() * H)
+        }
+    }
+
+    function renderDot(dot,dots){
+        if(line && !dot.finish){
+            dots.forEach(dot2=>{
+                const dis = getDistance(dot,dot2)
+                if(dis < 24 && dis > 16){
+                    pen.beginPath()
+                    pen.lineWidth = 0.5
+                    pen.moveTo(dot.x,dot.y)
+                    pen.lineTo(dot2.x,dot2.y)
+                    pen.closePath()
+                    pen.strokeStyle = getRandomColor()
+                    pen.stroke()
+                }
+            })
+        }
+        pen.beginPath()
+        pen.arc(dot.x,dot.y,dot.radius,0,2 * Math.PI)
+        pen.closePath()
+        pen.fillStyle = dot.color;
+        pen.fill()
+    }
+
+    function main(){
+        const text = input.value;
+        line = lineInput.checked;
+        speed = speedInput.value
+        color = colorInput.value
+        render(text)
+    }
+</script>
+</body>
+</html>
